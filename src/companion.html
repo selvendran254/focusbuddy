@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; media-src 'self' data:;">
+  <title>FocusBuddy Companion</title>
+  <link rel="stylesheet" href="companion.css">
+  <link rel="stylesheet" href="character3d.css">
+  <link rel="stylesheet" href="character3d-photo.css">
+</head>
+<body data-visible="false">
+  <div id="stage" class="stage" data-placement="above" data-style="rounded" data-tone="dark">
+    <div class="bubble hit" id="bubble">
+      <p id="bubble-text"></p>
+    </div>
+    <div class="actor-wrap hit" id="actor">
+      <div class="sprite" id="sprite"><i></i><img id="sprite-img" alt="" hidden></div>
+      <img class="bottle" id="bottle" alt="" src="../assets/bottle.svg">
+      <div class="mini" id="mini"></div>
+    </div>
+  </div>
+  <script src="animation.js"></script>
+  <script src="character.js"></script>
+  <script src="character3d.js"></script>
+  <script src="sound.js"></script>
+  <script src="companion.js"></script>
+</body>
+</html>

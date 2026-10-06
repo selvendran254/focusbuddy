@@ -1,0 +1,44 @@
+{
+  "name": "focusbuddy",
+  "productName": "FocusBuddy",
+  "version": "1.0.0",
+  "description": "A customizable floating desktop companion for healthier focus sessions.",
+  "main": "main.js",
+  "author": "FocusBuddy",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "postinstall": "node scripts/write-icons.js",
+    "start": "electron .",
+    "dev": "electron .",
+    "test": "node src/self-test.js",
+    "icons": "node scripts/write-icons.js",
+    "pack": "electron-builder --mac dir",
+    "dist": "electron-builder --mac dmg"
+  },
+  "build": {
+    "appId": "com.focusbuddy.desktop",
+    "productName": "FocusBuddy",
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "assets/icons/icon.png",
+      "target": [
+        "dmg"
+      ],
+      "identity": null,
+      "darkModeSupport": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^35.7.5",
+    "electron-builder": "^25.1.8"
+  }
+}

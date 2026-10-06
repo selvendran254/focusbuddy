@@ -1,0 +1,200 @@
+.buddy.photo {
+  position: relative;
+  display: block;
+  overflow: visible;
+}
+
+.buddy.photo .rig {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+}
+
+.buddy.photo .photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.buddy.photo .photo-arm-zone {
+  position: absolute;
+  inset: 0;
+  /* Keeps the lifted arm off the shoulder cap that stays on the body image. */
+  clip-path: polygon(
+    -50% -50%, 80.85% -50%, 80.85% 37%, 78.7% 40.9%, 79.5% 43.5%, 82% 44.6%,
+    86.5% 45%, 91% 44.3%, 93.6% 42.5%, 94.3% 40.9%, 150% 40.9%, 150% 150%, -50% 150%
+  );
+}
+
+.buddy.photo .photo-arm {
+  position: absolute;
+  inset: 0;
+  transform-origin: 88.65% 42.5%;
+}
+
+.buddy.photo .photo-arm .photo-img {
+  position: absolute;
+  inset: 0;
+}
+
+.buddy.photo .photo-bottle-pivot {
+  position: absolute;
+  left: 78.9%;
+  top: 62.5%;
+  width: 16%;
+  transform-origin: 50% 0;
+  opacity: 0;
+}
+
+.buddy.photo .photo-bottle {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+.buddy.sheet .photo-frame {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  max-width: 100%;
+  transform: translateX(-50%);
+}
+
+.buddy.sheet .photo-frame > .photo-img { position: absolute; inset: 0; }
+
+.buddy.sheet .photo-arm { transform-origin: 83.2% 31.5%; }
+
+.buddy.sheet .photo-arm-zone {
+  /* Mirrors the sheet-front SHOULDER in scripts/split-arm.py. */
+  clip-path: polygon(
+    -50% -50%, 74.8% -50%, 74.8% 28%, 72% 30.1%, 73% 32%, 78% 33%,
+    86% 33%, 91% 32%, 92.5% 30.1%, 150% 30.1%, 150% 150%, -50% 150%
+  );
+}
+
+.buddy.sheet .photo-bottle-pivot {
+  left: 69.2%;
+  top: 51.5%;
+  width: 28%;
+  transform-origin: 50% 50%;
+}
+
+.buddy.sheet.pose-drink .photo-arm { animation: sheet-arm-drink 3.2s ease-in-out infinite; }
+.buddy.sheet.pose-drink .photo-bottle-pivot { opacity: 1; animation: sheet-bottle-drink 3.2s ease-in-out infinite; }
+.stage[data-flip="true"] .buddy.sheet.pose-walk .photo-frame { transform: translateX(-50%) scaleX(-1); }
+
+@keyframes sheet-arm-drink {
+  0%, 12% { transform: rotate(0deg) scale(1); }
+  38% { transform: rotate(124deg) scale(0.7); }
+  50% { transform: rotate(120deg) scale(0.7); }
+  62% { transform: rotate(126deg) scale(0.7); }
+  74% { transform: rotate(122deg) scale(0.7); }
+  92%, 100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes sheet-bottle-drink {
+  0%, 12% { transform: rotate(0deg); }
+  38%, 74% { transform: rotate(-10deg); }
+  92%, 100% { transform: rotate(0deg); }
+}
+
+.buddy.photo .zzz {
+  position: absolute;
+  right: -6%;
+  top: 2%;
+  color: #f4f7fb;
+  font: 700 18px -apple-system, sans-serif;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+.buddy.photo .zzz small { font-size: 12px; margin-left: 2px; }
+
+.buddy.photo.pose-idle .rig { animation: photo-breathe 2.4s ease-in-out infinite; }
+.buddy.photo.pose-walk .rig { animation: photo-walk 0.5s ease-in-out infinite; }
+.buddy.photo.pose-walk .photo-arm { animation: arm-swing 0.5s ease-in-out infinite; }
+.buddy.photo.pose-drink .rig { animation: photo-sip-body 3.2s ease-in-out infinite; }
+.buddy.photo.pose-drink .photo-arm { animation: arm-drink 3.2s ease-in-out infinite; }
+.buddy.photo.pose-drink .photo-bottle-pivot { opacity: 1; animation: bottle-drink 3.2s ease-in-out infinite; }
+.buddy.photo.pose-wave .rig { animation: photo-wave 0.9s ease-in-out infinite; }
+.buddy.photo.pose-wave .photo-arm { animation: arm-wave 0.9s ease-in-out infinite; }
+.buddy.photo.pose-stretch .rig { animation: photo-stretch 1.6s ease-in-out infinite; }
+.buddy.photo.pose-jump .rig,
+.buddy.photo.pose-happy .rig { animation: photo-hop 0.6s ease-in-out infinite; }
+.buddy.photo.pose-sit .rig { animation: none; transform: scaleY(0.9); }
+.buddy.photo.pose-think .rig { animation: photo-think 2.6s ease-in-out infinite; }
+.buddy.photo.pose-sleep .rig { animation: photo-breathe 3.4s ease-in-out infinite; filter: brightness(0.85); }
+.buddy.photo.pose-sleep .zzz { opacity: 1; animation: photo-zzz 2.4s ease-in-out infinite; }
+
+@keyframes photo-breathe {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(1.01, 0.985); }
+}
+
+@keyframes photo-walk {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  25% { transform: translateY(-6px) rotate(0deg); }
+  50% { transform: translateY(0) rotate(3deg); }
+  75% { transform: translateY(-6px) rotate(0deg); }
+}
+
+@keyframes photo-sip-body {
+  0%, 15%, 90%, 100% { transform: rotate(0deg); }
+  40%, 75% { transform: rotate(-2deg); }
+}
+
+@keyframes arm-drink {
+  0%, 12% { transform: rotate(0deg) scale(1); }
+  38% { transform: rotate(122deg) scale(0.85); }
+  50% { transform: rotate(118deg) scale(0.85); }
+  62% { transform: rotate(124deg) scale(0.85); }
+  74% { transform: rotate(120deg) scale(0.85); }
+  92%, 100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes bottle-drink {
+  0%, 12% { transform: rotate(0deg); }
+  38%, 74% { transform: rotate(28deg); }
+  92%, 100% { transform: rotate(0deg); }
+}
+
+@keyframes arm-swing {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+
+@keyframes arm-wave {
+  0%, 100% { transform: rotate(84deg) scale(0.92); }
+  50% { transform: rotate(108deg) scale(0.92); }
+}
+
+@keyframes photo-wave {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes photo-stretch {
+  0%, 100% { transform: scale(1, 1); }
+  50% { transform: scale(0.97, 1.05); }
+}
+
+@keyframes photo-hop {
+  0%, 100% { transform: translateY(0) scale(1.02, 0.97); }
+  45% { transform: translateY(-18px) scale(0.98, 1.03); }
+}
+
+@keyframes photo-think {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-3deg); }
+}
+
+@keyframes photo-zzz {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}

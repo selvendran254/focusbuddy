@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; media-src 'self' data:;">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FocusBuddy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="character3d.css">
+  <link rel="stylesheet" href="character3d-photo.css">
+</head>
+<body>
+  <div id="welcome" class="welcome" hidden></div>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <strong>FocusBuddy</strong>
+        <span>Your tiny desktop companion.</span>
+      </div>
+      <nav id="nav" class="nav"></nav>
+    </aside>
+    <section class="workspace">
+      <header class="topbar">
+        <div>
+          <h1 id="page-title">Home</h1>
+          <p id="page-sub"></p>
+        </div>
+        <div id="mode-pill" class="pill"></div>
+      </header>
+      <div id="test-banner" class="test-banner" hidden>TEST MODE · reminders every 10 seconds. Saved interval is unchanged.</div>
+      <div id="page" class="page"></div>
+    </section>
+    <aside id="preview" class="preview-column"></aside>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="animation.js"></script>
+  <script src="character.js"></script>
+  <script src="character3d.js"></script>
+  <script src="reminders.js"></script>
+  <script src="sound.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
